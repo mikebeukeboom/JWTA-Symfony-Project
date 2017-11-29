@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    <ul class="list-inline">
+        <li class="list-inline-item"><a href="{{ path("item_controller") }}"><i class="fa fa-arrow-left" aria-hidden="true"></i></a></li>
+    </ul>
+    <div class="block_nav">
+
+    </div>
+    {{ form_start(edit_form) }}
+    {{ form_widget(edit_form) }}
+    <input type="submit" value="Edit"/>
+    {{ form_end(edit_form) }}
+
+{% endblock %}

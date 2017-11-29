@@ -1,0 +1,27 @@
+.container{
+    margin-top: 20px;
+    border: 1px solid;
+    border-color: orangered;
+    width: 679px;
+    height: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.block_nav{
+    margin-top: 30px;
+}
+
+.img{
+    margin-left: -15px;
+    border-bottom: 1px solid;
+    border-color: darkorange;
+}
+
+.footer{
+    margin-top: 25px;
+    text-align: center;
+    font-size: 10px;
+    color:darkorange;
+    margin-bottom: 5px;
+
+}

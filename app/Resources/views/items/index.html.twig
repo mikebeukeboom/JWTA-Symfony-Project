@@ -1,0 +1,91 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <ul class="list-inline">
+        <li>
+            <a class="list-inline-item" href="{{ path('item_new') }}">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </a>
+            <a class="list-inline-item" href="{{ path('usertodatabase') }}">
+                <i class="fa fa-refresh" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+
+    <h1>Rental</h1>
+    <h3>Available</h3>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+            {% if item.isAvailable == 1 %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td> {{ item.name }}</td>
+                    <td> {{ item.description }}</td>
+                    <td>
+                        <div class=“btn-group”>
+                             <a href="{{ path("item_edit", {'id': item.id}) }}" class="btn btn-sm btn-primary"><i
+                                        class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            </a> 
+                            <a href="{{ path("item_show", {'id': item.id}) }}" class="btn btn-sm btn-success"><i
+                                        class="fa fa-gift" aria-hidden="true"></i>
+                            </a> 
+                        </div>
+                    </td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+    <h3>Not Available</h3>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Peripherals</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+            {% if item.isAvailable == 0 %}
+                <tr>
+                    <td> {{ item.name }}</td>
+                    {% for log in logs %}
+                        {% if log.item.id == item.id and log.dateReturned == "" %}
+                            <td>{{ log.user }}</td>
+                            <td>{{ log.peripherals }}</td>
+                            <td>
+                                <a href="{{ path('item_return', {id: item.id, itemLog: log.id}) }}">
+                                    Inleveren
+                                </a>
+                            </td>
+                        {% endif %}
+                    {% endfor %}
+
+                    {#<td>#}
+                        {#<div class=“btn-group”>#}
+                            {# <a href="{{ path("item_edit", {'id': item.id}) }}" class="btn btn-sm btn-primary"><i#}
+                                        {#class="fa fa-pencil-square-o" aria-hidden="true"></i>#}
+                            {#</a> #}
+                            {#<a href="{{ path("item_show", {'id': item.id}) }}" class="btn btn-sm btn-success"><i#}
+                                        {#class="fa fa-gift" aria-hidden="true"></i>#}
+                            {#</a> #}
+                        {#</div>#}
+                    {#</td>#}
+                </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

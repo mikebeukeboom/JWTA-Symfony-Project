@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <ul class="list-inline">
+        <li class="list-inline-item">
+            <a href="{{ path('item_controller') }}"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+    <h1>New Item</h1>
+    <h2>Make sure the item is labeled correctly</h2>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="Create"/>
+    {{ form_end(form) }}
+
+
+{% endblock %}
