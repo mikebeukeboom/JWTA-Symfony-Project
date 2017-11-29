@@ -1,5 +1,3 @@
-jwta
-====
+# Rental and Hardware management.(Symfony)
 
-A Symfony project created on August 10, 2017, 7:45 am.
-# JWTA-Symfony-Project
+For JWTA we needed a application to track our rental hardware and inventory.
